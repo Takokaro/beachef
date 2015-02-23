@@ -1,4 +1,6 @@
 class DishType < ActiveRecord::Base
-  validates :name, presence true,
+  has_many :recipes
+ 
+  validates :title, presence: true,
                  length: { minimum: 3 }
 end
