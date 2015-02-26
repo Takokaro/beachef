@@ -1,0 +1,15 @@
+= form_for @dish_type do |d|
+  - if @dish_type.errors.any? 
+    h4
+      = pluralize(@dish_type.errors.count, 'error')
+      p dish type can't exists because of:
+      ul
+        - @dish_type.errors.full_messages.each do |message|
+          li 
+            = message
+
+  = d.label :title
+  = d.text_field :title
+  = d.label :description
+  = d.text_field :description
+  = d.button :save, class: 'btn'

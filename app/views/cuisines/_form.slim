@@ -1,0 +1,15 @@
+= form_for @cuisine do |c|
+  - if @cuisine.errors.any?
+    h4 
+      = pluralize(@cuisine.errors.count, 'error')
+      p cuisine can't exists because of:
+      ul
+        - @cuisine.errors.full_messages.each do |message|
+          li
+            = message
+          
+  = c.label :title
+  = c.text_field :title
+  = c.label :description
+  = c.text_field :description
+  = c.button :save, class: 'btn'

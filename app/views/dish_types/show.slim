@@ -1,0 +1,11 @@
+p 
+  strong Dish Type: 
+  = @dish_type.title
+
+p
+  strong Description: 
+  = @dish_type.description
+
+= link_to 'Edit', edit_dish_type_path(@dish_type)
+= link_to 'Delete', @dish_type, method: :delete, data: { confirm: 'Are you sure?' } 
+= link_to 'Back', dish_types_path

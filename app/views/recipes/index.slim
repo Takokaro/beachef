@@ -5,6 +5,7 @@
   div
     p Recipe of: #{recipe.title} 
     p = recipe.description 
-    p = link_to 'show', recipe_path(recipe)
-    p = link_to 'New Recipe', new_recipe_path, class: "btn-large" 
+    p = link_to 'Show', recipe_path(recipe)
+    
+p = link_to 'New Recipe', new_recipe_path, class: "btn" 
 

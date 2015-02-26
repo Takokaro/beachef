@@ -1,0 +1,13 @@
+p 
+  strong 
+    = @cuisine.title + ' Cuisine'
+p 
+  strong
+    = @cuisine.description 
+
+= link_to 'Edit', edit_cuisine_path(@cuisine)
+= link_to 'Delete', @cuisine, method: :delete, data: { confirm: 'Are you sure?' }
+p
+  = link_to 'Show recipes of ' + @cuisine.title + ' cuisine'
+
+= link_to 'Back', cuisines_path

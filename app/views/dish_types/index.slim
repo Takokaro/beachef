@@ -1,0 +1,8 @@
+h1 All Dish Types
+
+- @dish_types.each do |dish_type|
+  p Dish Type: #{dish_type.title}
+  p = dish_type.description
+  p = link_to 'Show', dish_type_path(dish_type) 
+
+p = link_to 'Add Dish Type', new_dish_type_path, class: 'btn'

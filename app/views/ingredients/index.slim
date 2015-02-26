@@ -1,0 +1,8 @@
+h1 All Ingredients
+
+- @ingredients.each do |ingredient|
+  p Ingredient: #{ingredient.title}
+  p = ingredient.description
+  p = link_to 'Show', ingredient_path(ingredient)
+
+p = link_to 'Add Ingredient', new_ingredient_path, class: 'btn'

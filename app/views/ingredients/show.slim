@@ -1,0 +1,11 @@
+p 
+  strong Ingredient: 
+  = @ingredient.title
+
+p
+  strong Description: 
+  = @ingredient.description
+
+= link_to 'Edit', edit_ingredient_path(@ingredient)
+= link_to 'Delete', @ingredients, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Back', ingredients_path
