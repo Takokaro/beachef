@@ -1,0 +1,21 @@
+= form_for @recipe, html: {class: 'main-form'} do |r|
+  - if @recipe.errors.any? 
+    h4 
+      = pluralize(@recipe.errors.count, 'error')
+      p recipe can't exists because of:
+      ul
+        - @recipe.errors.full_messages.each do |message|
+          li 
+            = message
+
+  = r.label :title
+  = r.text_field :title
+  = r.label :description
+  = r.text_field :description
+  = r.label :time
+  = r.text_field :time
+  = r.label :difficulty
+  = r.text_field :difficulty
+  = r.label :ingredient_count
+  = r.text_field :ingredient_count
+  = r.button :submit

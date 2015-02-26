@@ -1,0 +1,21 @@
+p
+  strong Recipe of: 
+  = @recipe.title
+
+p
+  strong Description:
+  = @recipe.description
+
+p
+  strong Number of ingredients:
+  = @recipe.ingredient_count
+
+p
+  strong Difficulty: 
+  = @recipe.difficulty 
+
+= link_to 'Edit', edit_recipe_path(@recipe) 
+= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Back', recipes_path 
+
+  
