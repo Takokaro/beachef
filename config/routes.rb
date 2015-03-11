@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-resources :recipes
+resources :recipes do
+  resources :ingredients  
+end
 root 'recipes#index'
 
 resources :cuisines, :dish_types, :ingredients
+
+post '/create_ingredient' => 'recipes#create_ingredient'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

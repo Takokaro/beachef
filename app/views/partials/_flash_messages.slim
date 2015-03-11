@@ -1,0 +1,5 @@
+#flash-message
+  - flash.each do |name, message|
+    .alert [class="alert-#{name}"]
+      button [class="close" data-dismiss="alert"] x
+      = message

@@ -13,6 +13,38 @@ p
 p
   strong Difficulty: 
   = @recipe.difficulty 
+p
+  strong Ingredints:
+  ul
+    - @recipe.ingredients.each do |ingredient|
+      - if ingredient.id.present?
+        li 
+          p 
+            strong Ingredient: 
+            = ingredient.title
+
+          p
+            strong Description: 
+            = ingredient.description
+
+          = link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient)
+
+= form_for @ingredient, url: { action: 'create_ingredient'}, remote: true do |i|
+  = i.label :title_of_ingredient
+  = i.text_field :title
+  = i.label :description
+  = i.text_field :description
+  = i.fields_for :recipe_ingredients do |ii|
+    = ii.label :ingredient_amount
+    = ii.text_field :ingredient_amount
+    = ii.label :ingredient_measure
+    = ii.text_field :ingredient_measure
+    = ii.hidden_field :recipe_id, value: @recipe.id
+
+  = i.fields_for @recipe do |ii|
+    = hidden_field_tag :id, @recipe.id
+    = hidden_field_tag 'recipe[title]', @recipe.title
+  = i.button :add, class: 'btn', remote: true
 
 = link_to 'Edit', edit_recipe_path(@recipe) 
 = link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' }
