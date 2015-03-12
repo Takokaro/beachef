@@ -7,9 +7,10 @@
         - @cuisine.errors.full_messages.each do |message|
           li
             = message
-          
-  = c.label :title
-  = c.text_field :title
-  = c.label :description
-  = c.text_field :description
-  = c.button :save, class: 'btn'
+  .input-field        
+    = c.label :title
+    = c.text_field :title
+  .input-field  
+    = c.label :description
+    = c.text_field :description
+  = c.button :save, class: 'btn waves-effect waves-light deep-purple lighten-3'

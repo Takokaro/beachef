@@ -7,14 +7,24 @@ p
   = @recipe.description
 
 p
+- if @recipe.cuisine_id.present?
+  strong Cuisine:
+  = @recipe.cuisine.title
+
+p 
+- if @recipe.dish_type_id.present?
+  strong Dish Type:
+  = @recipe.dish_type.title
+
+p
   strong Number of ingredients:
-  = @recipe.ingredient_count
+  = @recipe.ingredient_ids.count
 
 p
   strong Difficulty: 
   = @recipe.difficulty 
 p
-  strong Ingredints:
+  h5  List of Ingredients:
   ul
     - @recipe.ingredients.each do |ingredient|
       - if ingredient.id.present?
@@ -30,21 +40,26 @@ p
           = link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient)
 
 = form_for @ingredient, url: { action: 'create_ingredient'}, remote: true do |i|
-  = i.label :title_of_ingredient
-  = i.text_field :title
-  = i.label :description
-  = i.text_field :description
+  .input-field
+    = i.label :title_of_ingredient
+    = i.text_field :title
+  .input-field
+    = i.label :description
+    = i.text_field :description
+  
   = i.fields_for :recipe_ingredients do |ii|
-    = ii.label :ingredient_amount
-    = ii.text_field :ingredient_amount
-    = ii.label :ingredient_measure
-    = ii.text_field :ingredient_measure
-    = ii.hidden_field :recipe_id, value: @recipe.id
-
+    .input-field
+      = ii.label :ingredient_amount
+      = ii.text_field :ingredient_amount
+    .input-field
+      = ii.label :ingredient_measure
+      = ii.text_field :ingredient_measure
+      = ii.hidden_field :recipe_id, value: @recipe.id
+      
   = i.fields_for @recipe do |ii|
     = hidden_field_tag :id, @recipe.id
     = hidden_field_tag 'recipe[title]', @recipe.title
-  = i.button :add, class: 'btn', remote: true
+  = i.button :add, class: 'btn waves-effect waves-light deep-purple lighten-3', remote: true
 
 = link_to 'Edit', edit_recipe_path(@recipe) 
 = link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure?' }

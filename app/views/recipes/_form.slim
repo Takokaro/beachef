@@ -7,15 +7,32 @@
         - @recipe.errors.full_messages.each do |message|
           li 
             = message
-
-  = r.label :title
-  = r.text_field :title
-  = r.label :description
-  = r.text_field :description
-  = r.label :time
-  = r.text_field :time
-  = r.label :difficulty
-  = r.text_field :difficulty
-  = r.label :ingredient_count
-  = r.text_field :ingredient_count
-  = r.button :save, class: 'btn'
+  .input-field
+<<<<<<< HEAD
+    = r.label :title, class: (:active if @recipe.title)
+    = r.text_field :title
+  .input-field
+    = r.label :description, class: (:active if @recipe.description)
+    = r.text_field :description
+  .input-field
+    = r.label :time, class: (:active if @recipe.time)
+    = r.text_field :time
+  .input-field
+    = r.label :difficulty, class: (:active if @recipe.difficulty)
+=======
+    = r.label :title
+    = r.text_field :title
+  .input-field
+    = r.label :description
+    = r.text_field :description
+  .input-field
+    = r.label :time
+    = r.text_field :time
+  .input-field
+    = r.label :difficulty
+>>>>>>> ac6446b20738ed83aa114b6bbe75a53e6bb7caca
+    = r.text_field :difficulty
+  
+  = r.collection_select(:cuisine_id, Cuisine.all, :id, :title)
+  = r.collection_select(:dish_type_id, DishType.all, :id, :title)
+  = r.button :save, class: 'btn waves-effect waves-light deep-purple lighten-3'

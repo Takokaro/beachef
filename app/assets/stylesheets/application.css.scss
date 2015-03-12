@@ -16,3 +16,22 @@
 
 @import "materialize";
 @import "font-awesome";
+
+
+$purple: #7e57c2;
+$dark_purple: #673ab7;
+
+a {
+  margin-right: 5px;
+  color: $dark_purple;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid $purple;
+  box-shadow: 0 1px 0 0 $purple;
+}
+
+.dropdown-content li > span {
+  color: $dark_purple;
+}

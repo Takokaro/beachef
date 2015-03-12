@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   def show
     @ingredient = @recipe.ingredients.new
     @ingredient.recipe_ingredients.new
-
   end
 
   def new
@@ -19,10 +18,14 @@ class RecipesController < ApplicationController
   end
 
   def create
+    Rails.logger.info "˙˙"*10
     @recipe = Recipe.new(recipe_params)
-
+    @cuisine = Cuisine.find_by_id(:cuisine_id)
+    @dish_type = DishType.find_by_id(:dish_type_id)
     respond_to do |format|
       if @recipe.save
+        @recipe.cuisine = @cuisine
+        @recipe.dish_type = @dish_type
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created!' }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -75,7 +78,8 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:title, :description, :time, 
                                    :difficulty, :ingredients_count, :cuisine_id, 
-                                   :dish_types_id, ingredients_attributes: [:title, :description, :recipe_id], recipe_ingredients_attributes: [:ingredient_amount, :ingredient_measure])
+                                   :dish_type_id, ingredients_attributes: [:title, :description, :recipe_id], recipe_ingredients_attributes: [:ingredient_amount, :ingredient_measure],
+                                   cuisines_attributes: [:title], dish_types_attributes: [:title])
   end
 
   def ingredient_params

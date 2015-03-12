@@ -7,9 +7,10 @@
         - @ingredient.errors.full_messages.each do |message|
           li
             = message
-
-  = i.label :title
-  = i.text_field :title
-  = i.label :description
-  = i.text_field :description 
-  = i.button :Save, class: 'btn'
+  .input-field
+    = i.label :title
+    = i.text_field :title
+  .input-field  
+    = i.label :description
+    = i.text_field :description 
+  = i.button :Save, class: 'btn waves-effect waves-light deep-purple lighten-3'

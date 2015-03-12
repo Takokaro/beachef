@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150223132712) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "cuisine_id"
-    t.integer  "dish_types_id"
+    t.integer  "dish_type_id"
   end
 
 end

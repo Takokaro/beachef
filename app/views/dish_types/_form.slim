@@ -7,9 +7,10 @@
         - @dish_type.errors.full_messages.each do |message|
           li 
             = message
-
-  = d.label :title
-  = d.text_field :title
-  = d.label :description
-  = d.text_field :description
-  = d.button :save, class: 'btn'
+  .input-field
+    = d.label :title
+    = d.text_field :title
+  .input-field
+    = d.label :description
+    = d.text_field :description
+  = d.button :save, class: 'btn waves-effect waves-light deep-purple lighten-3'
